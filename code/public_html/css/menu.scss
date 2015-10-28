@@ -1,0 +1,212 @@
+$menu-width:200px;
+$logo-size:100px;
+$list-item-height:50px;
+$border-color:#ddd;
+$submenu-width:60px;
+.right-content{
+    position: fixed;
+    left: $menu-width + $submenu-width + 10;
+    right: 0;
+    
+    top: 0;
+    overflow: auto;
+    bottom: 0;
+    background: #E3E3F7;
+}
+.main-menu {
+    position: fixed;
+    width: $menu-width + $submenu-width + 10;
+    height: 100%;
+    background: #69A8CE;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(253, 253, 253)), color-stop(0.35, rgba(78, 99, 255, 0.41)), to(#69a8ce));
+    .header{
+        line-height: 40px;
+    text-align: center;
+    color: #3C417D;
+    background: rgba(182, 191, 255, 0.4);
+    font-size: 20px;
+    }
+}
+.list-menu{
+    position: absolute;
+    left: 0;
+    top:45px;
+    overflow: auto;
+
+    bottom: 0;
+    width:$menu-width;
+    .menu-item {
+        line-height: $list-item-height;
+        border-bottom: 1px solid $border-color;
+        font-weight: bold;
+        color: rgba(58, 58, 58, 0.61);
+        &.active{
+            background: #7676FF;
+            color:white;
+        }
+        a{
+            width: 100%;
+            height: 100%;
+
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            text-indent: 0;
+            &:hover{
+                text-indent:10px;
+            }
+            @include transition(all 200ms);
+            &:after{
+                font-family: "rs-font";
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                content:"\eb5c";
+                line-height: 50px;
+                float: right;
+                width: 30px;
+            }
+        }
+    }
+
+    
+    .copyright{
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        left: 0;
+        right: 0;
+        a{
+            color: rgba(11, 7, 247, 0.46);
+        }
+    }
+}
+.sub-menu{
+    top:45px;
+    overflow: auto;
+    bottom: 0;
+    position: absolute;
+    border-left: 5px double #F9F9F9;
+    border-right: 5px double #F9F9F9;
+    left: $menu-width;
+    width: $submenu-width + 10;
+
+}
+.personal-info {
+    width:$menu-width ;
+    height: $menu-width ;
+    position: relative;
+    font-size: 14px;
+    .user-info{
+        text-align: center;
+        .user-name{
+            color:white;
+        }
+        .user-position:after{
+            content: "】"
+        }
+        .user-position:before{
+            content:"【";
+        }
+    }
+    .btn-fn{
+        position:absolute;
+        bottom: 5px;
+        left: 0;
+        right: 0;
+            color: #777;
+    font-size: 12px;
+        text-align: center;
+        .btn{
+            display: inline-block;
+            padding: 5px 10px;
+            background: #eee;
+            border-radius: 5px;
+            
+            border:1px solid #ddd;
+        }
+        .btn-modify{
+            
+        }
+        .btn-logout{
+margin-left:10px;
+        }
+    }
+}
+.img-manager {
+    width:$logo-size;
+    heigth:$logo-size;
+    margin: $logo-size / 4 auto;
+    border-radius: $logo-size / 2;
+    display: block;
+}
+
+    
+a{
+        text-decoration: none;
+        color:white;
+}
+
+.sub-menu{
+    .menu-item{
+        cursor: pointer;
+        &.active{
+            text-shadow: 0px 0px 10px white;
+            color:white;
+            i{
+                top:-$submenu-width;
+                /*@include transition(all 200ms);*/
+            }
+            a{
+                top:0;
+                line-height:1.2; 
+               /*// @include transition(all 800ms);*/
+            }
+        }
+        width: $submenu-width;
+        height: $submenu-width;
+        position: relative;
+        overflow: hidden;
+        
+        line-height: $submenu-width;
+        text-align: center;
+
+        background: #3C417D;
+        color: rgba(249, 249, 249, 0.64);
+        border-bottom: 3px solid #ddd;
+
+        i,a{
+            position: absolute;
+            width: $submenu-width;
+            height: $submenu-width;
+            padding: 14px 0;
+            display: block;
+            
+        }
+        i{
+            font-size: 30px;
+            top:0; 
+            @include transition(all 800ms);   
+        }
+        a{
+            top:$submenu-width;
+            @include transition(all 200ms);
+        }
+        &:hover{
+            i{
+                top:-$submenu-width;
+                /*@include transition(all 200ms);*/
+            }
+            a{
+                top:0;
+                line-height:1.2; 
+               /*// @include transition(all 800ms);*/
+            }
+        }
+    }
+}

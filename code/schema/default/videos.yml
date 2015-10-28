@@ -1,0 +1,39 @@
+name: videos
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 100
+        notnull: true
+        default: null
+    description:
+        type: varchar
+        size: 250
+        notnull: true
+        default: null
+    length:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+    filepath:
+        type: varchar
+        size: 200
+        notnull: true
+        default: null
+    filemime:
+        type: varchar
+        size: 40
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

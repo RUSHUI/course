@@ -1,0 +1,19 @@
+seo:
+#the extension of html page
+  ext: html
+session:
+  #handler could be php, none or custom
+  #if set to custom, you have to set the value of session.classname
+  #handler: database
+  handler: php
+  #classname: the custom handler classname
+user:
+  #set the user classname
+  #will use \ORC\APP\User\User if not set
+  #classname: \APP\Module\User\User
+  secret: "xvasvdws9eq9wezsdfadeqsdfs"
+#file:
+  #the db table name 
+#  tablename: "attachments"
+#sms:
+#  classname: \APP\Module\Common\SMS\ShuMi

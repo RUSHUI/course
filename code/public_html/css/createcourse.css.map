@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,cAAe,CACX,KAAK,CAFY,KAAK,CAI1B,oBAAqB,CACjB,WAAW,CAAC,IAAI,CAEpB,YAAa,CACT,KAAK,CAAC,IAAI",
+"sources": ["createcourse.scss"],
+"names": [],
+"file": "createcourse.css"
+}

@@ -1,0 +1,27 @@
+name: courses
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 100
+        notnull: true
+        default: null
+    description:
+        type: text
+        notnull: true
+        default: null
+    type:
+        type: tinyint
+        size: 4
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

@@ -1,0 +1,17 @@
+html,body{
+  height: 100%;
+}
+html,body,li,ul {
+  margin: 0;
+  padding: 0;
+}
+li,ul{
+  list-style: none;
+}
+
+@media all {
+  a:hover,a:focus{
+    color:white;
+    text-decoration: inherit;
+  }
+}

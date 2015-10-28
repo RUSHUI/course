@@ -1,0 +1,12 @@
+#default page title
+title: "框架demo"
+#cache_buster: some value
+debug: true
+js:
+  - "/js/jquery/jquery-1.11.2.js"
+  - "/js/jquery/jquery-ui-1.11.2/jquery-ui.js"
+  - "/js/common.js"
+#css[] should be media,url
+css:
+  all:
+    - "/js/jquery/jquery-ui-1.11.2/jquery-ui.css"

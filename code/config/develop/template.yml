@@ -1,0 +1,12 @@
+#default page title
+title: "EOFFCN管理系统"
+#cache_buster: some value
+cache_buster: 2
+debug: true
+#js:
+#  - "/js/baseLib/jquery-1.11.3.js"
+#  - "/js/common.js"
+#css[] should be media,url
+#css:
+#  all:
+#    - "/css/css/index.css"

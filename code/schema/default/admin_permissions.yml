@@ -1,0 +1,31 @@
+name: admin_permissions
+fields:
+    id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    module_id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+    op:
+        type: tinyint
+        size: 3
+        unsigned: true
+        notnull: true
+        default: null
+    extra:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: '0'
+indexes:
+    primary:
+        - id
+generated: 1441646784

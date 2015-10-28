@@ -1,0 +1,19 @@
+name: admin_user_roles
+fields:
+    user_id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+    role_id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - user_id
+        - role_id
+generated: 1441638335

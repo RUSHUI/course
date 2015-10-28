@@ -1,0 +1,39 @@
+name: knowledge_points
+fields:
+    id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    code:
+        type: varchar
+        size: 100
+        notnull: true
+        default: null
+    name:
+        type: varchar
+        size: 100
+        notnull: true
+        default: null
+    sub_subject_id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+    primary_exam_type:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+    secondary_exam_types:
+        type: varchar
+        size: 200
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

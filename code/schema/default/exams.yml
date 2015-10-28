@@ -1,0 +1,29 @@
+name: exams
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 100
+        notnull: true
+        default: null
+    year:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+    description:
+        type: varchar
+        size: 1000
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

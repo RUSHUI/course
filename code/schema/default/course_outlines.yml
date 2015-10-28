@@ -1,0 +1,35 @@
+name: course_outlines
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    course_id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+    parent_id:
+        type: int
+        size: 11
+        notnull: true
+        default: null
+    type:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+    weight:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

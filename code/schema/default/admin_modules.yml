@@ -1,0 +1,18 @@
+name: admin_modules
+fields:
+    id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 30
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1441638335

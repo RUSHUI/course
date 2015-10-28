@@ -1,0 +1,14 @@
+blocks:
+  loginblock:
+    - index.tpl.block.leftside
+    - index.block.loginblock
+  menu:
+    - menu.block.menu
+#  knowledgepoint:
+#    - course.tpl.block.knowledgepoint
+css:
+    all:
+        - /css/bootstrap/bootstrap.css
+        - /css/index.css
+#js:
+#    - /js/jquery/jquery-1.11.2.js

@@ -1,0 +1,29 @@
+name: subjects
+fields:
+    id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 255
+        notnull: true
+        default: null
+    code:
+        type: varchar
+        size: 255
+        notnull: true
+        default: null
+    parent_id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1442281615

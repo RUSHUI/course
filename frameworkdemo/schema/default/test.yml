@@ -1,0 +1,28 @@
+name: test
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+    key1:
+        type: varchar
+        size: 40
+        notnull: true
+        default: null
+    key_2:
+        type: varchar
+        size: 40
+        notnull: true
+        default: null
+    count:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1433423770

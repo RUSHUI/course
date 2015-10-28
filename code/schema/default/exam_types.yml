@@ -1,0 +1,23 @@
+name: exam_types
+fields:
+    id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 100
+        notnull: true
+        default: null
+    code:
+        type: varchar
+        size: 10
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

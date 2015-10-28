@@ -1,0 +1,22 @@
+name: admin_departments
+fields:
+    id:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 40
+        notnull: true
+        default: null
+    description:
+        type: varchar
+        size: 100
+        notnull: false
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1441638335

@@ -1,0 +1,26 @@
+name: demo
+fields:
+    id:
+        type: int
+        size: 11
+        notnull: true
+        default: null
+    user:
+        type: varchar
+        size: 20
+        notnull: false
+        default: null
+    pwd:
+        type: varchar
+        size: 20
+        notnull: false
+        default: null
+    age:
+        type: int
+        size: 2
+        notnull: false
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1437463506

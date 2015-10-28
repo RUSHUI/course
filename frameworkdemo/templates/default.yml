@@ -1,0 +1,14 @@
+blocks:
+  menu:
+    - menu.block.menu
+  left_side:
+    - index.tpl.block.leftside
+  footer:
+    - source.block.view
+css:
+    all:
+        - /css/bootstrap/bootstrap.css
+#        - /css/jquery/jquery.snippet.css
+js:
+    - /js/bootstrap/bootstrap.js
+#    - /js/jquery/jquery.snippet.js

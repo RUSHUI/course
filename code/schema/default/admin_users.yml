@@ -1,0 +1,38 @@
+name: admin_users
+fields:
+    id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    name:
+        type: varchar
+        size: 20
+        notnull: true
+        default: null
+    mobile:
+        type: varchar
+        size: 11
+        notnull: true
+        default: null
+    email:
+        type: varchar
+        size: 20
+        notnull: true
+        default: null
+    password:
+        type: varchar
+        size: 40
+        notnull: true
+        default: null
+    department_id:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1441638335

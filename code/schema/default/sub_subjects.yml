@@ -1,0 +1,29 @@
+name: sub_subjects
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    subject_id:
+        type: smallint
+        size: 5
+        unsigned: true
+        notnull: true
+        default: null
+    name:
+        type: varchar
+        size: 255
+        notnull: true
+        default: null
+    code:
+        type: varchar
+        size: 10
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

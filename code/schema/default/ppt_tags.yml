@@ -1,0 +1,25 @@
+name: ppt_tags
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    ppt_id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+    tag_id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

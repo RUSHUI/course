@@ -1,0 +1,12 @@
+servers:
+  main:
+    engine: mysql
+    host: localhost
+    dbuser: root
+#    dbpass: password
+#    options:
+#      key: value
+default:
+  server: main
+  dbname: zhangchunsheng_test
+  debug: true

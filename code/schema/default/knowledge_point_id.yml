@@ -1,0 +1,24 @@
+name: knowledge_point_id
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+    primary_exam_type:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+    subject_id:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+        - primary_exam_type
+        - subject_id
+generated: 1438854425

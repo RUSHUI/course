@@ -1,0 +1,23 @@
+name: tags
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    type:
+        type: smallint
+        size: 6
+        notnull: true
+        default: null
+    tag:
+        type: varchar
+        size: 20
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

@@ -1,0 +1,14 @@
+servers:
+  default_server:
+    level: DEBUG
+    handlers:
+      - file
+default:
+  server: default_server
+app:
+  server: default_server
+  name: app
+DBAL:
+  server: default_server
+DAO: 
+  server: default_server

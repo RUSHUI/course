@@ -1,0 +1,5 @@
+default:
+  users:
+    cache:
+      server: default
+      expire: 86400

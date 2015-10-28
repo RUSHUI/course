@@ -1,0 +1,25 @@
+name: unit_tags
+fields:
+    id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+        extra: auto_increment
+    unit_id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+    tag_id:
+        type: int
+        size: 10
+        unsigned: true
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1438843752

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>offcn学生档案管理系统</title>
+    <link rel="stylesheet" href="./precss/css/index.css">
+
+</head>
+<body>
+    <nav class="main-menu left-menu">
+        <div class="header">eoffcn学生档案管理系统</div>
+        <div class="list-menu">
+            <div class="personal-info">
+                <img class="img-manager" src="./assets/imgs/icons/manager.jpg" alt="">
+                <div class="user-info"><span class="user-name">小春子</span><span class="user-position">管理员</span></div>
+                <div class="btn-fn">
+                    <span class="btn btn-modify">修改</span><span class="btn btn-logout">登出</span>
+                </div>
+            </div>
+            <ul class="menu-list">
+                <li class="menu-item server-group active" data-cmd="server-group">
+                    <a data-href="./html/groups.html">服务分组</a>
+                </li>
+                <li class="menu-item server-center" data-cmd="server-center">
+                    <a data-href="./html/servers.html">服务中心</a>
+                </li>
+                <li class="menu-item class-center" data-cmd="class-center">
+                    <a data-href="./html/classes.html">班级中心</a>
+                </li>
+                <li class="menu-item administrator-area" data-cmd="administrator-area">
+                    <a data-href="./html/administrator.html">管理员区</a>
+                </li>
+                <li class="menu-item stream-discript" data-cmd="stream-discript">
+                    <a data-href="./html/stream-discript.html">流程说明</a>
+                </li>
+                <li class="menu-item wait-thing" data-cmd="wait-thing">
+                    <a data-href="./html/stream-discript.html">待办事项</a>
+                </li>
+
+            </ul>
+            <div class="copyright"><a href="precss/rs-font/demo.html">icon-font</a> & <a href="http://www.eoffcn.com/">eoffcn</a></div>
+        </div>
+
+        <div class="sub-menu">
+            <ul class="menu-list">
+                <li class="menu-item {{sub-menu-cls}} active">
+                    <a data-href={{url}}>{{text}}</a>
+                    <i class="{{fn-cls}} {{icon-cls}}"></i>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="right-content">
+        <div id="iframe" src="./html/groups.html"></div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+servers:
+  default_server:
+    engine: php
+  memcache_server:
+    engine: memcache
+    servers:
+      - "localhost:11211:0"
+    #can be a list of options
+    #options:
+    #  key: value
+  fake_server:
+    engine: fake
+config_cache:
+  server: default_server
+default:
+  server: default_server
+fake:
+  server: fake_server
+memcache:
+  server: memcache_server
+api:
+  server: memcache_server

@@ -1,0 +1,22 @@
+name: user
+fields:
+    id:
+        type: int
+        size: 11
+        notnull: true
+        default: null
+        extra: auto_increment
+    username:
+        type: varchar
+        size: 20
+        notnull: true
+        default: null
+    password:
+        type: varchar
+        size: 20
+        notnull: true
+        default: null
+indexes:
+    primary:
+        - id
+generated: 1437463509
