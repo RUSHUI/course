@@ -4,7 +4,7 @@ requirejs.config({
         "jquery": "./baseLib/jquery-1.11.3"
     }
 });
-require(["jquery","menu","treelistexd"], function($,menudata,treelistexd) {
+require(["jquery","menu","treelist"], function($,menudata,treelist) {
     $(function(){
 
     });

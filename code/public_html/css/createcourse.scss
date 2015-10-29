@@ -8,18 +8,50 @@ $select_course_width:500px;
 .treelistexd {
     margin-top:-10px; 
     width:100%;
-
-    .treelist-item {
+   
+    .treelist-item {        
         position: relative;
         border: 1px solid #EFEFEF;
         border-radius: 2px;
-        margin: 10px 0 0 30px;
-        background: rgba(238, 238, 238, 0.34);
+        min-width: 455px;
+        margin: 10px 0;
+        //border-left: 5px solid #aaa;
+        background: rgba(238,238,238,0.34);
+        &.presymbol{
+            &::before{
+                font-family: "rs-font";
+                content: "\e9b9";
+                position: absolute;
+                speak: none;
+                left: -33px;
+                color: #555;
+                display: block;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
     }
     .field-text{
-        width: 200px;
         float: left;
+        border-left: 5px solid #aaa;
         margin-right: 15px;
+        label{
+            float: left;
+            height: 30px;
+            display: block;
+            line-height: 30px;
+            padding: 0 5px;
+            margin-bottom: 0;
+        }
+        input{
+            float: left;
+            width: 200px;
+        }
     }
     .form-field{
         width: 100%;
@@ -35,35 +67,38 @@ $select_course_width:500px;
         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     }
+    
     .posline{
-        &.hide{
-            display: none;
-        }
-        display:block;
+        display: none;
+        left: -30px;
+        position: absolute;
+        top: -15px;
+        
         i{
             position: absolute;
         }
         i.vertical {            
-            border-left: 1px solid;
+            border-left: 1px solid #504F4F;
             width: 0px;
             height: 30px;
             left: 15px;
-            top: 30px;
+            top: 0px;
         }
         i.horizontal {            
             width: 15px;
             border-bottom: 1px solid;
-            top: 60px;
+            top: 30px;
             left: 15px;
         }
     }
 }
 
 .tools-operation {
-    float: left;
+    float: right;
     i{
         display: block;
         float: left;
+        transition: all 200ms linear;
         width: 32px;
         cursor: pointer;
         padding: 5px 6px;
@@ -71,24 +106,51 @@ $select_course_width:500px;
         background: white;
         border: 1px solid #ddd;
         height: 30px;
-        &.operation.write{
-            margin-right: 10px;
-        }
         
     }
-    i.crud{
+    i.pass {
+        background: #1F7F1F;
+    }
+    i.done{
+        color: #01FF01;
+    }
+    i.error{
+        background:red;
+    }
+    i.warning{
+        background:orange;
+    }
+    i.not-allowed{
+        cursor: not-allowed;
+    }
+
+
+    .crud,.operation{
+        float:left;
+    }
+    .crud i{
         &:hover{
             color:white;
             background: red;
         }
     }
-    i.operation{
+    .operation i{
         &:hover{
             color: #FFFFFF;
             background: #6F6262;
         }
     }
-    
-    
+    &.vedio{
+        position:relative;
+        &::after{
+            content: "";
+            position: absolute;
+            background: #ddd url(../assets/imgs/icons/vedio.png) no-repeat;
+            width: 30px;
+            right: -35px;
+            height: 30px;
+            background-size: cover;
+        }
+    }
 }
     

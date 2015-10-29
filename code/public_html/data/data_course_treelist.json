@@ -1,0 +1,7 @@
+{
+    "code":0,
+    "msg":"返回成功",
+    "data":[
+        {"id":"1","text":"数量关系","level":0,"pid":"root","subn":0}
+    ]
+}

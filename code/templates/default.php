@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
       <meta charset="UTF-8">
-      <base href="http://tanpf.com/offcn/courses/code/public_html/">
+      <base href="http://localhost/offcn/courses/code/public_html/">
       <title><?php echo $title;?></title>
       
       <!-- 引入外部样式表 -->
@@ -43,7 +43,7 @@
                   <li data-cmd="page_course_create"><a class="nav_name ">课程制作</a></li>
                   <li data-cmd="page_course_shop"><a class="nav_name">课程商品</a></li>
                   <li data-cmd="page_person_center" class="nav_list_last">
-                      <a class="nav_name" href="javascript:alert("跳转个人中心页");">个人中心</a>
+                      <a class="nav_name" href="javascript:alert('跳转个人中心页');">个人中心</a>
                   </li>
 
               </ul>

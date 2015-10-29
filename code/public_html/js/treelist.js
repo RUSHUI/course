@@ -23,6 +23,7 @@ define(["jquery"], function($) {
         data:[],
         pid:+new Date,
         name:"treelist",
+        prewidth:35,
         vedioicon:true,
         delUrl:"./data/del_course_treelist.json",
         preText:{
@@ -90,40 +91,35 @@ define(["jquery"], function($) {
             var _temp="",num=0,label="";
             if(data.length>0){
                 for(var i=0;i<data.length;i++){
-                if(data[i].level!=0){
-                    _temp+='<div data-level="'+data[i].level+'" data-id="'+data[i].id+'" class="treelist-item nroot presymbol">';
-                }else{
-                    _temp+='<div data-level="'+data[i].level+'" data-id="'+data[i].id+'" class="treelist-item nroot">';
-                }
-                var preobj=ths.preTextupdate(data[i].level,i);
-                if(data[i].level==0){
-                    preobj.label=data[i].text;
-                }
-                _temp+='<div class="field-text"><label>'+preobj.label+'</label><input readonly type="text" placeholder="'+preobj.placeholder+'" class="form-field" value="'+data[i].text+'"/></div>';
-                _temp+='<div class="tools-operation ';
-                if(ths.settings.vedioicon){
-                    _temp+='vedio">';
-                }else{
-                    _temp+='">';
-                }
-                _temp+='<span class="operation">';
-                _temp+='<i data-cmd="subn" class="subn rs-list3" title="添加内容"></i>';
-                _temp+='<i data-cmd="nlgpt" class="nlgpt rs-clipboard3 rs-clipboard" title="添加知识点"></i>';
-                _temp+='<i data-cmd="attachment" class="attachment rs-attachment2" title="添加附件"></i>';
-                _temp+='<i data-cmd="testlisten" class="testlisten rs-volume4" title="选为试听"></i>';
-                _temp+='<i data-cmd="write" class="write rs-pencil4" title="编辑内容"></i>';
-                _temp+='</span><span class="crud" style="margin-left:10px;">';
-               // _temp+='<i class="setup  rs-cogs rs-settings2" title="配置记录"></i>';
-                _temp+='<i data-cmd="save" class="save rs-download" title="保存记录"></i>';
-                _temp+='<i data-cmd="del" class="del rs-trashcan" title="删除记录"></i>';
-                _temp+='<i data-cmd="state" class="state rs-checkmark2" title="初始状态"></i>';
-                _temp+='</span></div>';
+                    var marginLeft=data[i].level*ths.settings.prewidth;
+                    _temp+='<div data-childnum='+data[i].subn.length+' style="margin-left:'+marginLeft+'px" data-level="'+data[i].level+'" data-id="'+data[i].id+'" class="treelist-item nroot">';
+                    var preobj=ths.preTextupdate(data[i].level,i);
+                    if(data[i].level==0){
+                        preobj.label=data[i].text;
+                    }
+                    _temp+='<div class="field-text"><label>'+preobj.label+'</label><input readonly type="text" placeholder="'+preobj.placeholder+'" class="form-field" value="'+data[i].text+'"/></div>';
+                    _temp+='<div class="tools-operation ';
+                    if(ths.settings.vedioicon){
+                        _temp+='vedio">';
+                    }else{
+                        _temp+='">';
+                    }
+                    _temp+='<span class="operation">';
+                    _temp+='<i data-cmd="subn" class="subn rs-list3" title="添加内容"></i>';
+                    _temp+='<i data-cmd="nlgpt" class="nlgpt rs-clipboard3 rs-clipboard" title="添加知识点"></i>';
+                    _temp+='<i data-cmd="attachment" class="attachment rs-attachment2" title="添加附件"></i>';
+                    _temp+='<i data-cmd="testlisten" class="testlisten rs-volume4" title="选为试听"></i>';
+                    _temp+='<i data-cmd="write" class="write rs-pencil4" title="编辑内容"></i>';
+                    _temp+='</span><span class="crud" style="margin-left:10px;">';
+                   // _temp+='<i class="setup  rs-cogs rs-settings2" title="配置记录"></i>';
+                    _temp+='<i data-cmd="save" class="save rs-download" title="保存记录"></i>';
+                    _temp+='<i data-cmd="del" class="del rs-trashcan" title="删除记录"></i>';
+                    _temp+='<i data-cmd="state" class="state rs-checkmark2" title="初始状态"></i>';
+                    _temp+='</span></div>';
 
-                _temp+='<div class="clear-float"></div>';
-                if(data[i].subn.length>0){
-                    _temp+=arguments.callee(data[i].subn);
+                    _temp+='<div class="clear-float"></div>';
+                    _temp+="</div>";                    
                 }
-                _temp+="</div>";}
             }else{
                 return _temp;
             }
@@ -189,8 +185,9 @@ define(["jquery"], function($) {
             _n.find("i").removeClass('done').removeClass('pass').removeClass('warning').removeClass('error');
             _n.find(".field-text label").html(preobj.label);
             _n.find(".field-text input").removeAttr("readonly").val("").attr("placeholder",preobj.placeholder);
-            _n.addClass('presymbol');
-            _n.appendTo($item);
+            // _n.addClass('presymbol');
+            _n.insertAfter($item);
+            _n.css("margin-left",(level*ths.settings.prewidth)+"px");
             _n.find("input").focus();
         };
         var up=function(elm,cls){

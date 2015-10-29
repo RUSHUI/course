@@ -9,5 +9,4 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
-.clear-float:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
-.clear-float{zoom:1} 
+.clear-float{clear:both;} 
