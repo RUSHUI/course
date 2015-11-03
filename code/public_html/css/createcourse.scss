@@ -8,13 +8,48 @@ $select_course_width:500px;
 .treelistexd {
     margin-top:-10px; 
     width:100%;
-   
+    min-width:1000px;
+    .treelist-item.tree-root::before{
+        content: "\ead6";
+        font-family: rs-font;
+        float: left;
+        width: 30px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .type-tree-limb::before{
+        content: "\ead6";
+        font-family: rs-font;
+        float: left;
+        width: 30px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .type-knowledgePoint::before{
+        content: "\e821";
+        font-family: rs-font;
+        float: left;
+        width: 30px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .type-attachment::before{
+        content: "\eae7";
+        font-family: rs-font;
+        float: left;
+        width: 30px;
+        text-align: center;
+        line-height: 30px;
+    
+    }
     .treelist-item {        
         position: relative;
         border: 1px solid #EFEFEF;
         border-radius: 2px;
-        min-width: 455px;
-        margin: 10px 0;
+        // min-width: 455px;
+        transition: all 200ms linear;
+        margin: 5px 0;
+        clear: left;
         //border-left: 5px solid #aaa;
         background: rgba(238,238,238,0.34);
         &.presymbol{
@@ -35,10 +70,67 @@ $select_course_width:500px;
                 -webkit-font-smoothing: antialiased;
             }
         }
+        &.treelist-leaf-att.first{
+            margin-left:150px!important;
+        }
+        &.treelist-leaf-att.text{
+                clear: none;
+                width: 150px;
+                display: inline-block;
+                margin: -4px 1px -3px;
+                border: 1px solid #ddd;
+             .tap {
+                width: 150px;
+                line-height: 20px;
+                float: left;
+                font-size: 10px;
+                padding: 0 5px;
+                overflow: hidden;
+                cursor:pointer;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                i {
+                    width: 20px;
+                    display: inline-block;
+                    line-height: 20px;
+                }
+                &:hover,&.active{
+                    background: #555;
+                    color: white;
+                }
+
+            }
+            .field-text{
+                display:none;
+            }
+            .tools-operation{
+                display:none;
+            }
+        }
+        &.treelist-leaf-att.active{
+             .tap {
+                width: 150px;
+                line-height: 20px;
+                float: left;
+                font-size: 10px;
+                padding: 0 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display:none;
+            }
+            .field-text{
+                display:block;
+            }
+            .tools-operation{
+                display:block;
+            }
+        }
     }
+
     .field-text{
         float: left;
-        border-left: 5px solid #aaa;
+        // border-left: 5px solid #aaa;
         margin-right: 15px;
         label{
             float: left;
@@ -50,7 +142,7 @@ $select_course_width:500px;
         }
         input{
             float: left;
-            width: 200px;
+            width: 300px;
         }
     }
     .form-field{
@@ -58,7 +150,6 @@ $select_course_width:500px;
         height: 30px;
         padding: 6px 12px;
         border: 0;
-        outline: 0;
         background: #fff;
         border-bottom: 1px solid #ccc;
         -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -89,6 +180,99 @@ $select_course_width:500px;
             border-bottom: 1px solid;
             top: 30px;
             left: 15px;
+        }
+    }
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.53);
+}
+.edit-att{
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    box-shadow: 0px 0px 10px 2px black;
+    right: 0;
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    transition: all 500ms linear;
+    border-radius: 5px;
+    &.active{
+        display: block;
+    }
+    .add {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: 20px;
+        top: 15px;
+        font-size: 30px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+    }
+    .nav-tabs {
+        margin-bottom:15px;
+        &> li {
+                padding: 10px 15px 0px;
+                margin-bottom: -1px;
+                cursor: pointer;
+            &.active{
+                border: 1px solid #ddd;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                background: white;
+                border-bottom-color: transparent;
+            }
+
+        } 
+    }
+    .tab-content{
+            border: 1px solid #aaa;
+            overflow: auto;
+    max-height: 270px;
+    }
+    .table{
+        tr>td:nth-child(1){
+            width:100px;
+        }
+        select,input{
+            height: 26px;
+            width: 100%;
+            min-width: 150px;
+                border-radius: 1px;
+        }
+        span.btn-del {
+            display: inline-block;
+            line-height: 26px;
+        }
+        .item{
+            border:1px solid #ddd;
+            border-left:0;
+            border-right:0;
+        }
+
+    }
+    .tools.btn-group {
+        border: 1px solid#ddd;
+        border-radius: 5px;
+            margin-top: 10px;
+        .btn{
+            border-left: 1px solid #aaa;
+        }
+        span:nth-child(1){
+            border:0;
         }
     }
 }
@@ -140,10 +324,10 @@ $select_course_width:500px;
             background: #6F6262;
         }
     }
-    &.vedio{
+    .vedio{
         position:relative;
         &::after{
-            content: "";
+            // content: "";
             position: absolute;
             background: #ddd url(../assets/imgs/icons/vedio.png) no-repeat;
             width: 30px;
