@@ -1,0 +1,14 @@
+{
+    "code":0,
+    "msg":"返回成功",
+    "data": [{
+                "id": 8,
+                "attachments_type": 1,
+                "name": "附件名称",
+                "parent_id":12432,
+                "course_catalog_id": 1,
+                "data_path": "url",
+                "weight": 1,
+                "create_time": "2015-11-08 11:11:01"
+            }]
+}

@@ -109,7 +109,7 @@ define(["jquery"], function($) {
 
         var ths = this, index = 0, pre_index_text = "rs" ;
 
-        var drawTreeATT = function _ATT( pid, data, selector ){
+        var drawTreeATT = function _ATT( pid, data, selector ,num ){
             
             var _temp = "";
 
@@ -123,7 +123,13 @@ define(["jquery"], function($) {
                         _course_catalog_id  = data[i].course_catalog_id,
                         _data_path          = data[i].data_path,
                         _selector           = selector + "_" + ( i + 1 ),
+
                         _create_time        = data[i].create_time;
+
+                    if( num ){
+                        _selector = selector + "_" + ( num + 1 );
+                        num++;
+                    }
 
                     _temp += '<div ';
                     _temp += ' data-id=' + _id;
@@ -220,8 +226,9 @@ define(["jquery"], function($) {
                     _temp += '<div class="tools-operation">';
                     _temp += '<span class="operation">';
 
+                    _temp += '<i data-cmd="edit" class="edit rs-edit" title="编辑内容"></i>';
                     _temp += '<i data-cmd="testlisten" class="testlisten rs-volume4" title="选为试听"></i>';
-                    _temp += '<i data-cmd="write" class="write rs-pencil4" title="编辑内容"></i>';
+                    _temp += '<i data-cmd="write" class="write rs-pencil4" title="编辑名称"></i>';
                     _temp += '</span><span class="crud" style="margin-left:10px;">';
                     _temp += '<i data-cmd="save" class="save rs-download" title="保存记录"></i>';
                     _temp += '<i data-cmd="del" class="del rs-trashcan" title="删除记录"></i>';
@@ -250,19 +257,19 @@ define(["jquery"], function($) {
                 var selectArr=_selector.split("_");
                 switch( selectArr.length ){
                     case 2:
-                    console.log("课程节点",selectArr);
+                        console.log("课程节点",selectArr);
                     break;
                     case 3:
-                    _serial = selector + "_section";
-                    console.log("section节点",_serial,selectArr);
+                        _serial = selector + "_section";
+                        console.log("section节点",_serial,selectArr);
                     break;
                     case 4:
-                    _serial = selector + "_artcle";
-                    console.log("artcle节点",_serial,selectArr);
+                        _serial = selector + "_artcle";
+                        console.log("artcle节点",_serial,selectArr);
                     break;
                     case 5:
-                    _serial = selector + "_joint";
-                    console.log("joint节点",_serial,selectArr);
+                        _serial = selector + "_joint";
+                        console.log("joint节点",_serial,selectArr);
                     break;
                     default:console.log("分割参数出错！");
                 }
@@ -286,8 +293,7 @@ define(["jquery"], function($) {
 
                    
 
-                    var _depth        = data[i].depth,
-                        _status       = data[i].status,
+                    var _status       = data[i].status,
                         _is_audition  = data[i].is_audition,
                         _course_id    = data[i].course_id,
                         _sub_children = data[i].sub_children;
@@ -296,6 +302,7 @@ define(["jquery"], function($) {
                     _temp += ' data-status = ' + _status           ;
                     _temp += ' data-is_audition = ' + _is_audition ;
                     _temp += ' data-course_id = ' + _course_id     ;
+                    _temp += ' data-sub_num = ' + _sub_children.length ;
                     _temp += ' class="treelist-item'               ; 
                     _temp += ' type-tree-limb warning'             ;
                     _temp += '" >';
@@ -304,7 +311,6 @@ define(["jquery"], function($) {
                     _temp += ' class="form-field" value="' + _name + '"/></div>'        ;
                     _temp += '<div class="tools-operation">'        ;
                     _temp += '<span class="operation">'             ;
-                    _temp += '<i data-cmd="fold" data-status="opened" class="fold rs-circle-up" title="折叠/展开"></i>'; 
                     _temp += '<i data-cmd="subn" class="subn rs-folder-plus" title="添加内容"></i>'; 
                     _temp += '<i data-cmd="nlgpt" class="nlgpt rs-clipboard3 rs-clipboard" title="添加知识点"></i>';
                     _temp += '<i data-cmd="attachment" class="attachment rs-attachment2" title="添加附件"></i>';
@@ -315,7 +321,7 @@ define(["jquery"], function($) {
                     _temp += '<i data-cmd="del" class="del rs-trashcan" title="删除记录"></i>';
                     _temp += '<i data-cmd="state" class="state rs-checkmark2" title="初始状态"></i>';
                     
-                    _temp += '<i data-cmd="" class="" title="无视频"></i>';
+                    _temp += '<i data-cmd="fold" data-status="opened" class="fold rs-circle-up" title="折叠/展开"></i>'; 
                     // rs-warning2
                     
                     _temp += '</span></div><div class="clear-float"></div></div>';
@@ -364,6 +370,7 @@ define(["jquery"], function($) {
         var _ievent = function( cmd, item ){
 
             var $item = $( item ), $this = $( this );
+
             //console.log(item);
             
             switch( cmd ){
@@ -372,44 +379,22 @@ define(["jquery"], function($) {
                     fold.call(ths,selector,$this);
                 break;
                 case "subn" :
-                    var depth = $item.data( "depth" ) || $item.attr( "data-depth" );
-                    subn.call( this, parseInt( depth ) + 1, $item );
+                    var selector = $item.data( "selector" ) || $item.attr( "data-selector" ),
+                        len = $item.data("sub_num") || $item.attr("data-sub_num");
+                    subn.call( this, parseInt( len ), selector, $item );
                 break;
                 case "nlgpt" :
 
                 break;
-                case "zoomin" :
-                    $item.removeClass("active").addClass('text');
-                    var selector=$item.data("selector")||$item.attr("data-selector");
-                    selector=selector.substring(0,selector.length-1);
-                    var att=[];
-                    ths.dom.find("[data-selector^="+selector+"]").each(function(){
-                        var $this=$(this);
-                        if($this.hasClass("treelist-leaf-att")){
-                            att.push(this);
-                        }
-                    });
-                    var index=parseInt($item.attr("data-index"));
-                    if(index!=0){
-                        att.forEach(function(elm,idx){
-                            if( $(elm).attr("data-index")==(index-1) && (!$(elm).hasClass('active')) ){
-                                $(elm).removeClass("first");
-                            }
-                        });
-                    }
-                    att.forEach(function(elm,idx){
-                        if((!$(elm).hasClass('active'))||$(elm).attr("data-index")==(index+1)){
-                            $(elm).removeClass("first");
-                        }
-                    });
-
-                break;
+                
                 case "attachment" :
-
+                    ths.attEdit($item.attr("data_id"),$item,{});
                 break;
+
                 case "testlisten" :
                     $item.find(">.tools-operation i.testlisten").toggleClass('pass').toggleClass('done');
                 break;
+
                 case "write" :
                     if(!$this.hasClass('done')){
                         $item.find(">.field-text input").removeAttr("readonly").focus();
@@ -418,9 +403,11 @@ define(["jquery"], function($) {
                         alert("请点击对勾完成编辑后数据保存")
                     }
                 break;
+
                 case "save":
                     
                 break;
+
                 case "del":
                 var confirm=window.confirm("确定删除当前章节和其所包含的内容吗？");
                 if(confirm){
@@ -459,17 +446,10 @@ define(["jquery"], function($) {
                 $this.addClass('rs-circle-up').removeClass('rs-circle-down');
             }
         };
-        var subn = function( depth, $item ){
+        var subn = function( sequence, selector, $item ){
 
-            var children=ths.dom.find( "[data-depth=" + depth + "]" );
+            var children=ths.dom.find( "[data-depth=" + selector.substring(0,selector.length-1) +(sequence-2)+ "]" );
             
-            //修正节点上的直接子节点的个数
-            $item.attr( "data-sub_num", children.length );
-            
-            // children[children.length-1].
-
-
-
             var _n=$item.clone(),
             level=parseInt($item.data("level")||$item.attr("data-level")),
             id=$item.data("id")||$item.attr("data-id"),
@@ -482,6 +462,11 @@ define(["jquery"], function($) {
             }
             //ths.dom.find(["data-suquence="+i])
             _n.insertAfter($item);
+
+            //修正节点上的直接子节点的个数
+            $item.attr( "data-sub_num", children.length );
+            
+
             $item.data("subn",subn+1)||$item.attr("subn",subn+1);
             var preobj=ths.preText(level,subn);
 
@@ -505,9 +490,7 @@ define(["jquery"], function($) {
             }else{
                 return arguments.callee( elm.parentNode, cls );
             }
-        };
-
-        
+        };        
         
         this.dom.on( "click",".tools-operation .operation i", function( ){
             
@@ -537,7 +520,7 @@ define(["jquery"], function($) {
                     $(elm).find(".tap").removeClass("active");
                 }
             });
-            ths.attEdit.call(ths,$item.attr("data-pid"));
+            ths.attEdit.call(ths,$item.attr("data-id"),$item,{});
             
         });
         this.dom.on( "click", ".tools-operation .crud i", function(){
@@ -554,7 +537,7 @@ define(["jquery"], function($) {
 
         this.dom.find( ".treelist-item:first-child i.del" ).addClass( 'not-allowed' );
     };
-    treelist.prototype.attEdit=function(pid,$item){
+    treelist.prototype.attEdit=function(id,$item,data){
         var ths=this;
         var _temp="<div class='mask'>";
           _temp +='<div class="edit-att">';
@@ -645,6 +628,16 @@ define(["jquery"], function($) {
         edit.on("click",".cancel",function(){
             edit.remove();
         });
+        edit.on("click",".btn-del",function(){
+            if(confirm("确定删除本条记录吗？")){
+                var table=edit.find(".tab-content .tab-pane.active");
+                if(table.find(".item").length<=1){
+                    alert("删除失败,不能删除最后一条记录");
+                    return ;
+                }
+                $(this.parentNode.parentNode).remove();
+            }
+        });
         edit.on("click",".nav-tabs li",function(){
             var $this=$(this);
             if(!$this.hasClass('active')){
@@ -656,15 +649,25 @@ define(["jquery"], function($) {
         });
         function addAtt(url,data){
             $.ajax({
-                url:"./data/dataok.json",
+                url:"./data/addAtt.json",
                 data:data,
                 success:function(e){
                     if(e.code){
                         console.log("处理失败");
                     }else{
                         alert("保存成功");
-                        ths.insertATT(e.data,function(){
-                            edit.remove();
+                        ths.insertATT(id,
+                            e.data,
+                            (function(){
+                                var sel=$item.attr("data-selector");
+                                return sel.substring(0,sel.length-2);
+                            })(),
+                            parseInt((function(){
+                                var sel=$item.attr("data-selector");
+                                return sel.substr(sel.length-1,1);
+                            })()),
+                            function(){
+                                edit.remove();
                         });
 
                     }
@@ -688,7 +691,8 @@ define(["jquery"], function($) {
         });
 
     };
-    treelist.prototype.insertATT=function(data,fn){
+    treelist.prototype.insertATT=function(pid,data,selector,num,fn){
+        var str=this.draw.drawTreeATT(data[0].parent_id,data,selector,num);
         fn&&fn();
     };
     treelist.prototype.deleteItem = function( id, url, fn ){
